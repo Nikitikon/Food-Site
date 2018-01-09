@@ -1,0 +1,176 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="{% static 'base\css\bootstrap.min.css' %}">
+	<link rel="stylesheet" href="{% static 'base\css\bootstrap-theme.min.css' %}">
+	<link rel="stylesheet" href="{% static 'base\css\custom.css' %}">
+	<link href="https://fonts.googleapis.com/css?family=Cambo" rel="stylesheet">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="{% static 'base/js/bootstrap.min.js' %}"></script>
+	<title>Food Maestro</title>
+
+</head>
+<body data-spy="scroll">
+<div class="jumbotron">
+	<div class="container text-center">
+		<h1>Food Maestro</h1>
+		<h3><em>Готовить может каждый</em></h3>
+	</div>
+</div>
+
+<nav class="navbar navbar-default">
+	<div class="container-fluid"  id="mycolor">
+		<div class="navbar-header" >
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+				<span class="icon-bar"></span>
+			</button>
+			<a class="navbar-brand" href="#" style="color: black">Food Maestro</a>
+		</div>
+		<div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav" >
+				<li class="active"><a href="/" style="color: black">Главная</a></li>
+				<li><a href="#" style="color: black">Рецепты</a></li>
+				<li><a href="#" style="color: black">Авторы</a></li>
+				<li><a href="#" style="color: black">Контакты</a></li>
+				<li><button id="collapsbutton" class="btn navbar-btn" data-toggle="collapse" data-target="#foodSearch">Поиск рецептов <span id="collapsSpan" class="glyphicon glyphicon-plus"></span></button></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				{%if user.is_superuser%}
+				<li class="vertical"><a href="#" style="color: black"><span class="glyphicon glyphicon-pencil"></span></a></li>
+				{%endif%}
+				{%if user.is_authenticated%}
+				<li class="vertical"><a href="#" style="color: black"><span class="glyphicon glyphicon-book" style="color: #ffac1f"></span> Добавить рецепт</a></li>
+				<li class="vertical"><a href="#" style="color: black"><span class="glyphicon glyphicon-bookmark" style="color: #d85c37"></span> Мои рецепты</a></li>
+				<li><a href="#" style="color: black"><span class="glyphicon glyphicon-user"></span> {{ user.username }}</a></li>
+				<li><a href="{% url 'logout' %}" style="color: black"><span class="glyphicon glyphicon-log-out"></span> Выход</a></li>
+				{%else%}
+					<li><a href="/register/" style="color: black"><span class="glyphicon glyphicon-new-window"></span> Регистрация</a></li>
+					<li><a href="{% url 'login' %}" style="color: black" ><span class="glyphicon glyphicon-log-in"></span> Вход</a></li>
+				{%endif%}
+			</ul>
+		</div>
+	</div>
+	<hr>
+	<div class="container-fluid collapse"  id="foodSearch">
+		<form class="form-inline" action="search/" method="post"> {% csrf_token %}
+		<div class="row">
+			<div class="col-md-8 col-md-offset-3">
+				<div class="container" style="padding-top: 8px">
+						<div class="form-group">
+							<input type="text" class="form-control" placeholder="Название блюда" name="dish_name" maxlength="30">
+						</div>
+						<div class="form-group" >
+							<label for="category_dish" class="sr-only">Категории блюд</label>
+							<select class="form-control" id="category_dish">
+								<option>Любая категория</option>
+								<option>Заготовки</option>
+								<option>Выпечка и десерты</option>
+								<option>Основные блюда</option>
+								<option>Салаты</option>
+								<option>Супы</option>
+								<option>Паста и пицца</option>
+								<option>Закуски</option>
+								<option>Сэндвичи</option>
+								<option>Ризотто</option>
+								<option>Соусы и маринады</option>
+								<option>Бульоны</option>
+							</select>
+							<label for="world_kitchen" class="sr-only">Кухня</label>
+							<select class="form-control" id="world_kitchen">
+								<option>Любая кухня</option>
+								<option>Китайская</option>
+								<option>Мексиканская</option>
+								<option>Грузинская</option>
+								<option>Французская</option>
+								<option>Японская</option>
+								<option>Индийская</option>
+								<option>Русская</option>
+								<option>Средиземноморская</option>
+								<option>Узбекская</option>
+								<option>Армянская</option>
+								<option>Тайская</option>
+								<option>Кухня Вестероса</option>
+								<option>Итальянская</option>
+								<option>Испанская</option>
+								<option>Азербайджанская</option>
+							</select>
+							<label for="menu_type" class="sr-only">Тип меню</label>
+							<select class="form-control" id="menu_type">
+								<option>Любое меню</option>
+								<option>Вегетарианская еда</option>
+								<option>Детское меню</option>
+								<option>Низкокалорийная еда</option>
+								<option>Постная еда</option>
+								<option>Меню при диабете</option>
+							</select>
+						</div>
+
+					<!--<label class="checkbox-inline"><input type="checkbox" value="">Включить не указанные ингредиенты</label>-->
+					<button type="submit" class="btn btn-success">Найти рецепты</button>
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col-md-5 col-md-offset-4">
+				<div class="parent_container">
+					<input type="text" class="form-control" placeholder="Включить ингредиенты +" name="include_ingredients" maxlength="100" id="include_ingredients">
+					<input type="text" class="form-control" placeholder="Исключить ингредиенты -" name="exclude_ingredients" maxlength="100" id="exclude_ingredients">
+					<label class="checkbox-inline" id="mychack"><input type="checkbox" value="">Включить не указанные ингредиенты</label>
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+</div>
+</nav>
+
+
+
+{% block content %}
+
+{% endblock %}
+
+<br><br>
+
+<footer class="container-fluid text-center" id="footer">
+	<div class="row">
+		<div class="col-md-4 col-md-offset-4">
+			<blockquote class="blockquote">
+				<h2>Счастье живёт на кухне.</h2>
+				<footer>Paul Bocuse</footer>
+			</blockquote>
+		</div>
+		<p style="font-size: larger" class="col-md-2 col-md-offset-2 text-right">Food Maestro ©</p>
+	</div>
+</footer>
+
+
+<script type="text/javascript">
+    window.onload = function () {
+        $('#collapsbutton').on('click', function () {
+            var spanclass = document.getElementById("collapsSpan").className;
+            if(spanclass == 'glyphicon glyphicon-plus')
+                document.getElementById("collapsSpan").className = 'glyphicon glyphicon-minus';
+            else
+                document.getElementById("collapsSpan").className = 'glyphicon glyphicon-plus';
+        });
+        }
+</script>
+
+
+<script type="text/javascript">
+    $(document).ready(function(){
+        $('#include_ingredients').popover({content: "Вводите ингредиенты через пробел", container: ".parent_container", placement: "bottom", trigger: "focus"});
+        $('#exclude_ingredients').popover({content: "Вводите ингредиенты через пробел", container: ".parent_container", placement: "bottom", trigger: "focus"});
+    });
+</script>
+
+{% block footer %}
+{% endblock %}
+</body>
+</html>

@@ -1,0 +1,91 @@
+/* Remove the navbar's default rounded borders and increase the bottom margin */
+.navbar {
+    margin-bottom: 50px;
+    border-radius: 0;
+}
+
+/* Remove the jumbotron's default bottom margin */
+.jumbotron {
+    margin-bottom: 0;
+    background-color: #ffc036;
+
+}
+
+/* Add a gray background color and some padding to the footer */
+footer {
+    background-color: white;
+    padding: 10px;
+}
+
+a{
+    text-decoration: none;
+    color: ivory;
+}
+
+body{
+    background-color: #e7e7e7;
+    font-family: Combo;
+}
+
+#mycolor{
+    background-color: white;
+}
+
+.nav a{
+    color: black;
+}
+
+.vertical{
+    border-right: 1px solid black ;
+}
+
+.blockquote{
+    margin: 0;
+    border: none;
+}
+
+.blockquote footer{
+    padding: 0;
+}
+
+#speshborder{
+    border: 1px solid #b2dba1;
+    border-radius: 8px;
+}
+
+#speshborder a{
+    padding: 14px;
+}
+
+.row p{
+    margin-top: 100px;
+}
+
+.active{
+    background-color: white;
+}
+
+#collapsbutton{
+    color: black;
+    background-color: #73e4dc;
+}
+
+#collapsbutton span{
+    color: whitesmoke;
+}
+
+#foodSearch{
+    background-color: white;
+}
+
+hr{
+    margin: 0;
+}
+
+#mychack{
+    font-family: "Comic Sans MS";
+}
+
+.post-form textarea, .post-form input {
+    width: 100%;
+}
