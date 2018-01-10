@@ -8,6 +8,7 @@ from django.db.models import Sum
 class RecipesPost(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=50)
+    description = models.TextField(max_length=500, blank=True)
     instruction = models.TextField(max_length=5000)
     published_date = models.DateTimeField(
         blank=True, null=True)
