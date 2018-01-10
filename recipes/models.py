@@ -18,6 +18,7 @@ class RecipesPost(models.Model):
     food_menu = models.ForeignKey('recipes.Menu', on_delete=models.CASCADE, null=True, blank=True)
     food_kitchens  = models.ForeignKey('recipes.Kitchens', on_delete=models.CASCADE, null=True, blank=True)
     food_ingredients = models.TextField(max_length=1000, blank=True)
+    recipe_rating = models.DecimalField(max_digits=8, decimal_places=4, default=0.0)
 
     def __str__(self):
         return self.title

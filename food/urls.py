@@ -23,7 +23,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('accounts/login/', authViews.login, name='login'),
     path('register/', userViews.RegisterFormView.as_view()),
-    path('', recipes_views.main_page, name='main_page'),
     path('', include('recipes.urls')),
     path('accounts/logout/', authViews.logout, name='logout', kwargs={'next_page': '/'}),
 ]
