@@ -1,10 +1,11 @@
 from django.db import models
 from django.utils import timezone
 from PIL import Image
+from django.db.models import Sum
 
 # Create your models here.
 
-class RecopesPost(models.Model):
+class RecipesPost(models.Model):
     author = models.ForeignKey('auth.User', on_delete=models.CASCADE, null=True)
     title = models.CharField(max_length=50)
     instruction = models.TextField(max_length=5000)
@@ -23,7 +24,7 @@ class RecopesPost(models.Model):
 
     def save(self, *args, **kwargs):
         # Сначала - обычное сохранение
-        super(RecopesPost, self).save(*args, **kwargs)
+        super(RecipesPost, self).save(*args, **kwargs)
         _MAX_SIZE = 700
 
         # Проверяем, указан ли логотип
@@ -70,3 +71,34 @@ class Kitchens(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class LikeDislike(models.Model):
+    LIKE = 1
+    DISLIKE = -1
+
+    VOTES = (
+        (DISLIKE, 'Не нравится'),
+        (LIKE, 'Нравится')
+    )
+
+    vote = models.SmallIntegerField(choices=VOTES)
+    user = models.ForeignKey('auth.User', on_delete=models.CASCADE)
+
+    recipes_post = models.ForeignKey('recipes.RecipesPost', on_delete=models.CASCADE)
+
+
+class LikeDislikeManager(models.Manager):
+    use_for_related_fields = True
+
+    def likes(self):
+        # Забираем queryset с записями больше 0
+        return self.get_queryset().filter(vote__gt=0)
+
+    def dislikes(self):
+        # Забираем queryset с записями меньше 0
+        return self.get_queryset().filter(vote__lt=0)
+
+    def sum_rating(self):
+        # Забираем суммарный рейтинг
+        return self.get_queryset().aggregate(Sum('vote')).get('vote__sum') or 0
