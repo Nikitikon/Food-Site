@@ -6,7 +6,7 @@
 			<div class="panel panel-primary">
 
 				<div class="panel-heading">{{recipes.0.title}}</div>
-				<a><div class="panel-body"><img src="{{recipes.0.foodimage}}" class="img-responsive" style="width:100%" alt="Image"></div></a>
+				<a href="{% url 'recipes_detail' pk=recipes.0.pk %}"><div class="panel-body"><img src="/static/media/{{recipes.0.foodimage}}" class="img-responsive" style="width:100%" alt="Image"></div></a>
 
 
 			</div>
@@ -15,7 +15,7 @@
 			<div class="panel panel-danger">
 
 				<div class="panel-heading">{{ recipes.1.title }}</div>
-				<a><div class="panel-body"><img src="{{ recipes.1.foodimage }}" class="img-responsive" style="width:100%" alt="Image"></div></a>
+				<a><div class="panel-body"><img src="/static/media/{{ recipes.1.foodimage }}" class="img-responsive" style="width:100%" alt="Image"></div></a>
 
 
 			</div>
@@ -24,7 +24,7 @@
 			<div class="panel panel-success">
 
 				<div class="panel-heading">{{recipes.2.title }}</div>
-				<a><div class="panel-body"><img src="{{recipes.2.foodimage }}" class="img-responsive" style="width:100%" alt="Image"></div></a>
+				<a><div class="panel-body"><img src="/static/media/{{recipes.2.foodimage }}" class="img-responsive" style="width:100%" alt="Image"></div></a>
 
 
 			</div>
@@ -38,7 +38,7 @@
 			<div class="panel panel-primary">
 
 				<div class="panel-heading">{{ recipes.3.title }}</div>
-				<a><div class="panel-body"><img src="{{ recipes.3.foodimage }}" class="img-responsive" style="width:100%" alt="Image"></div></a>
+				<a><div class="panel-body"><img src="/static/media/{{ recipes.3.foodimage }}" class="img-responsive" style="width:100%" alt="Image"></div></a>
 
 
 			</div>
@@ -47,7 +47,7 @@
 			<div class="panel panel-primary">
 
 				<div class="panel-heading">{{ recipes.4.title }}</div>
-				<a><div class="panel-body"><img src="{{ recipes.4.foodimage }}" class="img-responsive" style="width:100%" alt="Image"></div></a>
+				<a><div class="panel-body"><img src="/static/media/{{ recipes.4.foodimage }}" class="img-responsive" style="width:100%" alt="Image"></div></a>
 
 
 			</div>
@@ -55,7 +55,7 @@
 		<div class="col-sm-4">
 			<div class="panel panel-primary">
 				<div class="panel-heading" style="">{{ recipes.5.title }}</div>
-                <a href="#"><div class="panel-body"><img src="{{ recipes.5.foodimage }}" class="img-responsive" style="width:100%" alt="Image"></div></a>
+                <a href="#"><div class="panel-body"><img src="/static/media/{{ recipes.5.foodimage }}" class="img-responsive" style="width:100%" alt="Image"></div></a>
 
 
 

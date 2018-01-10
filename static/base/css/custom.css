@@ -1,3 +1,38 @@
+#collapsbutton{
+    color: black;
+    background-color: #73e4dc;
+}
+
+#collapsbutton span{
+    color: whitesmoke;
+}
+
+#foodSearch{
+    background-color: white;
+}
+
+hr{
+    margin: 0;
+}
+
+#mychack{
+    font-family: "Comic Sans MS";
+}
+
+.spishial_conteiner{
+    margin-left: 370px;
+    margin-right: 0px;
+}
+
+.caption p{
+    margin-top: 0px;
+}
+
+.img-thumbnail{
+;
+}
+
+
 .navbar {
     margin-bottom: 50px;
     border-radius: 0;
@@ -68,36 +103,3 @@ body{
     background-color: white;
 }
 
-#collapsbutton{
-    color: black;
-    background-color: #73e4dc;
-}
-
-#collapsbutton span{
-    color: whitesmoke;
-}
-
-#foodSearch{
-    background-color: white;
-}
-
-hr{
-    margin: 0;
-}
-
-#mychack{
-    font-family: "Comic Sans MS";
-}
-
-.spishial_conteiner{
-    margin-left: 370px;
-    margin-right: 0px;
-}
-
-.caption p{
-    margin-top: 0px;
-}
-
-.img-thumbnail{
-;
-}

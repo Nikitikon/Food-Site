@@ -20,4 +20,5 @@ from . import views
 urlpatterns = [
     path('', views.main_page, name='main_page'),
     path('recipe/', views.recipes_list, name='recipes_list'),
+    path('recipe/detail/<int:pk>/', views.recipes_detail, name='recipes_detail'),
 ]

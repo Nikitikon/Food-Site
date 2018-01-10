@@ -2,6 +2,7 @@ from django.shortcuts import render, render_to_response
 from .models import RecipesPost
 from  django.utils import timezone
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.http import HttpResponse
 
 # Create your views here.
 def main_page(request):
@@ -11,7 +12,7 @@ def main_page(request):
 def recipes_list(request):
     context = {}
     # Забираем все опубликованные статье отсортировав их по дате публикации
-    all_recipes = RecipesPost.objects.filter(published_date__lte=timezone.now()).order_by('-article_date')
+    all_recipes = RecipesPost.objects.filter(published_date__lte=timezone.now()).order_by('-published_date')
     # Создаём Paginator, в который передаём статьи и указываем,
     # что их будет 8 штук на одну страницу
     current_page = Paginator(all_recipes, 8)
@@ -25,4 +26,8 @@ def recipes_list(request):
     except EmptyPage:
         # Если вышли за последнюю страницу, то возвращаем последнюю
         context['recipe_lists'] = current_page.page(current_page.num_pages)
-    return render_to_response('listPage/recipes_list.html', context)
+    return render_to_response('mainPage/recipes_list.html', context)
+
+
+def recipes_detail(request, pk):
+    return HttpResponse("OK")

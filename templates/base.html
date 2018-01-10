@@ -57,7 +57,7 @@
 	</div>
 	<hr>
 	<div class="container-fluid collapse"  id="foodSearch">
-		<form class="form-inline" action="search/" method="post"> {% csrf_token %}
+		<form class="form-inline" action="search/" method="get"> {% csrf_token %}
 		<div class="row">
 			<div class="col-md-8 col-md-offset-3">
 				<div class="container" style="padding-top: 8px">
@@ -66,7 +66,7 @@
 						</div>
 						<div class="form-group" >
 							<label for="category_dish" class="sr-only">Категории блюд</label>
-							<select class="form-control" id="category_dish">
+							<select class="form-control" id="category_dish" name="category_dish">
 								<option>Любая категория</option>
 								<option>Заготовки</option>
 								<option>Выпечка и десерты</option>
@@ -81,7 +81,7 @@
 								<option>Бульоны</option>
 							</select>
 							<label for="world_kitchen" class="sr-only">Кухня</label>
-							<select class="form-control" id="world_kitchen">
+							<select class="form-control" id="world_kitchen" name="world_kitchen">
 								<option>Любая кухня</option>
 								<option>Китайская</option>
 								<option>Мексиканская</option>
@@ -100,7 +100,7 @@
 								<option>Азербайджанская</option>
 							</select>
 							<label for="menu_type" class="sr-only">Тип меню</label>
-							<select class="form-control" id="menu_type">
+							<select class="form-control" id="menu_type" name="menu_type">
 								<option>Любое меню</option>
 								<option>Вегетарианская еда</option>
 								<option>Детское меню</option>

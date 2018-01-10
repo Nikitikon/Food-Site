@@ -1,0 +1,130 @@
+{% extends 'base.html' %}
+{% block content %}
+    <style>
+        .caption p {
+            margin-top: 0px;
+        }
+  </style>
+
+<div class="container">
+	<div class="row">
+    {% if recipe_lists.0 %}
+	<div class="col-md-3">
+		<div class="thumbnail">
+
+			<a href="{% url 'recipes_detail' pk=recipe_lists.0.pk %}" target="_blank">
+				<img src="/static/media/{{ recipe_lists.0.foodimage }}" class="img-responsive" style="width:100%" alt="Image">
+				<div class="caption">
+					<p>{{ recipe_lists.0.description }}</p>
+				</div>
+			</a>
+
+		</div>
+	</div>
+    {% endif %}
+    {% if recipe_lists.1 %}
+	<div class="col-md-3">
+		<div class="thumbnail">
+
+			<a href="{% url 'recipes_detail' pk=recipe_lists.1.pk %}" target="_blank">
+				<img src="/static/media/{{ recipe_lists.1.foodimage }}" alt="Nature" style="width:100%">
+				<div class="caption">
+					<p>{{ recipe_lists.1.description }}</p>
+				</div>
+			</a>
+
+		</div>
+	</div>
+    {% endif %}
+    {% if recipe_lists.2 %}
+	<div class="col-md-3">
+		<div class="thumbnail">
+
+			<a href="{% url 'recipes_detail' pk=recipe_lists.2.pk %}" target="_blank">
+				<img src="/static/media/{{ recipe_lists.2.foodimage }}" alt="Fjords" style="width:100%">
+				<div class="caption">
+					<p>{{ recipe_lists.2.description }}</p>
+				</div>
+			</a>
+
+		</div>
+        {% endif %}
+	</div>
+{% if recipe_lists.3 %}
+	<div class="col-md-3">
+		<div class="thumbnail">
+
+			<a href="{% url 'recipes_detail' pk=recipe_lists.3.pk %}" target="_blank">
+				<img src="/static/media/{{ recipe_lists.3.foodimage }}" alt="Fjords" style="width:100%">
+				<div class="caption">
+					<p>{{ recipe_lists.3.description }}</p>
+				</div>
+			</a>
+
+		</div>
+	</div>
+    {% endif %}
+</div>
+
+	<div class="row">
+    {% if recipe_lists.4 %}
+		<div class="col-md-3">
+			<div class="thumbnail">
+
+				<a href="{% url 'recipes_detail' pk=recipe_lists.4.pk %}" target="_blank">
+					<img src="/static/media/{{ recipe_lists.4.foodimage }}" alt="Lights" style="width:100%">
+					<div class="caption">
+						<p>{{ recipe_lists.4.description }}</p>
+					</div>
+				</a>
+
+			</div>
+		</div>
+    {% endif %}
+    {% if recipe_lists.5 %}
+		<div class="col-md-3">
+			<div class="thumbnail">
+
+				<a href="{% url 'recipes_detail' pk=recipe_lists.5.pk %}" target="_blank">
+					<img src="/static/media/{{ recipe_lists.5.foodimage }}" alt="Nature" style="width:100%">
+					<div class="caption">
+						<p>{{ recipe_lists.5.description }}</p>
+					</div>
+				</a>
+
+			</div>
+		</div>
+    {% endif %}
+    {% if recipe_lists.6 %}
+		<div class="col-md-3">
+			<div class="thumbnail">
+
+				<a href="{% url 'recipes_detail' pk=recipe_lists.6.pk %}" target="_blank">
+					<img src="/static/media/{{ recipe_lists.6.foodimage }}" alt="Fjords" style="width:100%">
+					<div class="caption">
+						<p>{{ recipe_lists.6.description }}</p>
+					</div>
+				</a>
+
+			</div>
+		</div>
+    {% endif %}
+{% if recipe_lists.7 %}
+		<div class="col-md-3">
+			<div class="thumbnail">
+
+				<a href="{% url 'recipes_detail' pk=recipe_lists.7.pk %}" target="_blank">
+					<img src="/static/media/{{ recipe_lists.7.foodimage }}" alt="Fjords" style="width:100%">
+					<div class="caption">
+						<p>{{ recipe_lists.7.description }}</p>
+					</div>
+				</a>
+
+			</div>
+		</div>
+    {% endif %}
+	</div>
+    {% load bootstrap3 %}
+    {% bootstrap_pagination recipe_lists %}
+</div><br><br>
+{% endblock %}
